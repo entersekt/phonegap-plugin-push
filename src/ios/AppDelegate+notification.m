@@ -57,7 +57,6 @@ NSString *const pushPluginApplicationDidBecomeActiveNotification = @"pushPluginA
 {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
-
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(pushPluginOnApplicationDidBecomeActive:)
                                                 name:UIApplicationDidBecomeActiveNotification
@@ -83,7 +82,6 @@ NSString *const pushPluginApplicationDidBecomeActiveNotification = @"pushPluginA
 
     // app is in the background or inactive, so only call notification callback if this is a silent push
     if (application.applicationState != UIApplicationStateActive) {
-
         NSLog(@"app in-active");
 
         // do some convoluted logic to find out if this should be a silent push.
@@ -182,7 +180,6 @@ NSString *const pushPluginApplicationDidBecomeActiveNotification = @"pushPluginA
         self.coldstart = [NSNumber numberWithBool:NO];
         [pushHandler performSelectorOnMainThread:@selector(notificationReceived) withObject:pushHandler waitUntilDone:NO];
     }
-
     [[NSNotificationCenter defaultCenter] postNotificationName:pushPluginApplicationDidBecomeActiveNotification object:nil];
 }
 
@@ -209,7 +206,6 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     NSMutableDictionary *userInfo = [response.notification.request.content.userInfo mutableCopy];
     [userInfo setObject:response.actionIdentifier forKey:@"actionCallback"];
     NSLog(@"Push Plugin userInfo %@", userInfo);
-
     switch ([UIApplication sharedApplication].applicationState) {
         case UIApplicationStateActive:
         {
