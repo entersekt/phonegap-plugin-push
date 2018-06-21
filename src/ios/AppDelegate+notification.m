@@ -57,6 +57,10 @@ NSString *const pushPluginApplicationDidBecomeActiveNotification = @"pushPluginA
 {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     center.delegate = self;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d38ec3... the completionHandler moved in the else statement (#2417)
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(pushPluginOnApplicationDidBecomeActive:)
                                                 name:UIApplicationDidBecomeActiveNotification
@@ -82,6 +86,10 @@ NSString *const pushPluginApplicationDidBecomeActiveNotification = @"pushPluginA
 
     // app is in the background or inactive, so only call notification callback if this is a silent push
     if (application.applicationState != UIApplicationStateActive) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6d38ec3... the completionHandler moved in the else statement (#2417)
         NSLog(@"app in-active");
 
         // do some convoluted logic to find out if this should be a silent push.
